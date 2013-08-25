@@ -103,3 +103,40 @@
 	-ms-transform: rotate(90deg);
 	transform: rotate(90deg);
 }
+
+/*override*/
+.clock{
+	margin-top:35px;
+}
+
+.flip-clock-wrapper{
+	display:block;
+	margin:0 auto;
+}
+
+.flip-clock-wrapper ul{
+	width:35px;
+	height:60px;
+	line-height:62px;
+}
+
+.flip-clock-wrapper ul li a div div.inn {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 200%;
+    color: #ccc;
+    text-shadow: 0 1px 2px #000;
+    text-align: center;
+    background-color: #333;
+    border-radius: 6px;
+    font-size: 35px;
+}
+
+.flip-clock-divider{
+	height:85px;
+}
+.flip-clock-divider .flip-clock-label {right:-60px;}
+.flip-clock-divider.minutes .flip-clock-label { right: -65px; }
+.flip-clock-divider.seconds .flip-clock-label { right: -65px; }
