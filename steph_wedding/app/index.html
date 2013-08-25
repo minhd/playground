@@ -77,7 +77,8 @@
             <h1 class="sideway-rsvp-label">RSVP</h1>
             <div class="content">
                 <form ng-submit="respond()">
-                    <input type="number" placeholder="1" value="{{num_adults}}" ng-model="num_adults" min="1"> Adults Attending<br/>
+                    <input type="number" class="number" placeholder="1" value="{{num_adults}}" ng-model="num_adults" min="1"> Adults 
+                    Attending<br/>
                     <input type="text" size="1" placeholder="1" value="{{num_children}}"> Children Attending<br/>
                     <div>
                         <h1>Adults</h1>
@@ -142,19 +143,15 @@
         <script src="scripts/lib/flipclock/js/flipclock/libs/prefixfree.min.js"></script>
         <script src="scripts/lib/flipclock/js/flipclock/flipclock.min.js"></script>
         <script>
-        var t1 = new Date("April 20, 2014 09:00:00");
-        var t2 = new Date();
-        var dif = t1.getTime() - t2.getTime()
-        var Seconds_from_T1_to_T2 = dif / 1000;
+            var t1 = new Date("April 20, 2014 09:00:00");
+            var t2 = new Date();
+            var dif = t1.getTime() - t2.getTime()
+            var Seconds_from_T1_to_T2 = dif / 1000;
 
-        console.log(t2);
-        console.log(t1);
-        console.log(Seconds_from_T1_to_T2);
-
-        var clock = $('.clock').FlipClock(Seconds_from_T1_to_T2, {
-            clockFace: 'DailyCounter',
-            countdown:true
-        });
+            var clock = $('.clock').FlipClock(Seconds_from_T1_to_T2, {
+                clockFace: 'DailyCounter',
+                countdown:true
+            });
         </script>
 
         <!-- my scripts -->

@@ -20,7 +20,6 @@ function rsvpCtrl($scope){
 		}else if($scope.num_adults < $scope.adults.length){
 			$scope.adults = $scope.adults.slice(0, $scope.num_adults);
 		}
-		console.log($scope.adults);
 	});
 
 	$scope.respond = function(){
