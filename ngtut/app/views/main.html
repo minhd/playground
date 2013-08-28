@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="row">
+		<div class="span6">
+			<h1>AngulAir</h1>
+			<ul ng-repeat="airport in airports">
+				<li>
+					<a href="" ng-click="setAirport(airport.code)">{{airport.code}} - {{airport.name}}</a>
+					<a href="" class="btn btn-small" ng-click="editAirport(airport.code)">Edit</a>
+				</li>
+			</ul>
+		</div>
+		<div class="span6" ng-include src="sidebar"></div>
+	</div>
+	<div ng-include src="edit_form"></div>
+</div>

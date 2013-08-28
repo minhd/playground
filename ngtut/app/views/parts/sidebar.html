@@ -1,0 +1,7 @@
+<div ng-show="current_airport">
+	<h3>{{current_airport.name}}</h3>
+	<h4>Destinations</h4>
+	<ul>
+		<li ng-repeat="destination in current_airport.destinations">{{destination}}</li>
+	</ul>
+</div>
