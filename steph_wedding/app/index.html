@@ -3,11 +3,11 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> 
-<html class="no-js" ng-app id="ng-app"> <!--<![endif]-->
+<html class="no-js" ng-app="site"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Stephanie and Sam - Wedding</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -28,7 +28,8 @@
         
         <!-- endbuild -->
     </head>
-    <body data-spy="scroll" data-target="#nav">
+    <!-- <body data-spy="scroll" data-target="#nav"> -->
+    <body>
         <div class="navbar navbar-inverse navbar-fixed-top" id="nav">
             <div class="container">
                 <div class="navbar-header">
@@ -41,7 +42,7 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#rsvp">RSVP</a></li>
+                        <li><a href="#rsvp">RSVP</a></li>
                         <li><a href="#travel">Travel Info</a></li>
                         <li><a href="#accomondation">Accomondation</a></li>
                         <li><a href="#ceremony">Ceremony</a></li>
@@ -76,18 +77,51 @@
         <div class="container-fluid section" ng-controller="rsvpCtrl">
             <h1 class="sideway-rsvp-label">RSVP</h1>
             <div class="content">
-                <form ng-submit="respond()">
-                    <input type="number" class="number" placeholder="1" value="{{num_adults}}" ng-model="num_adults" min="1"> Adults 
-                    Attending<br/>
-                    <input type="text" size="1" placeholder="1" value="{{num_children}}"> Children Attending<br/>
-                    <div>
-                        <h1>Adults</h1>
-                        <div ng-repeat="adult in adults" class="adult">
-                            <input type="text" class="respond_name" value="{{adult.name}}"><br/>
+
+                <form ng-submit="respond()" role="form" id="rsvp_form" ng-hide="rsvp_id">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div ng-show="num_adults > 0">
+                                
+                                <p><input type="number" class="number form-control" placeholder="1" value="{{num_adults}}" ng-model="num_adults" min="1"> Adults attending</p>
+                                <div ng-repeat="adult in attending.adults" class="form-group">
+                                    <div class="col-lg-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Adult</span>
+                                            <input type="text" required class="form-control respond_name adult" value="{{adult}}" placeholder="Attending Guest Full Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr/>
+                                
+                                <p><input type="number" class="number form-control" placeholder="0" value="{{attending.children.length}}" ng-model="num_childrens" min="0"> Childs attending</p>
+                                <div ng-repeat="child in attending.childrens" class="form-group">
+                                    <div class="col-lg-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Child</span>
+                                            <input type="text" required class="form-control respond_name input-sm child" value="{{child}}" placeholder="Attending Child Full Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                                
+                                <button type="submit" class="btn btn-primary btn-lg">Respond</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <textarea class="form-control" ng-model="attending.diet" rows="10" placeholder="Dietry Requirements / Any Notes?"></textarea>
+                            </div>
                         </div>
                     </div>
-                    <button type="submit">Respond</button>
                 </form>
+
+                <div ng-show="rsvp_id">
+                    <h1 class="heading"><em>Thank you</em> for your RSVP!</h1>
+                    <p class="center"><a href="#rsvp" ng-click="reset_rsvp()" class="center">Make another RSVP</a></p>
+                </div>
+
             </div>
         </div>
 
@@ -95,7 +129,28 @@
         <div class="container-fluid section">
             <h1 class="heading">Travel Info</h1>
             <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nesciunt, libero, repellat, placeat debitis esse ducimus excepturi recusandae unde laudantium provident eligendi sed ipsum tempora error est culpa dolorum mollitia!
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Flights</h4>
+                            </div>
+                            <div class="panel-content">
+                                Flights Information
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Lodging</h4>
+                            </div>
+                            <div class="panel-content">
+                                Hotels information
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -136,6 +191,9 @@
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+        <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+        <script src="http://firebase.github.io/angularFire/angularFire.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -157,14 +215,12 @@
         <!-- my scripts -->
         <script src="scripts/rsvp.js"></script>
 
-
-
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 
         <!-- build:js(.tmp) scripts/coffee.js -->
-        <script src="scripts/hello.js"></script>
+        <!--script src="scripts/hello.js"></script-->
         <!-- endbuild -->
 </body>
 </html>
