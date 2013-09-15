@@ -18,5 +18,6 @@
         $(document).on('keydown', '#rsvp_form', function(e){
             if(e.keyCode==13) e.preventDefault();
         });
+        
     })
 }(window.jQuery)
