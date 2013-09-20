@@ -23,8 +23,7 @@ module.exports = function(grunt){
 		},
 		useminPrepare:{
 			options: {
-				dest: '<%= yeoman.dist %>',
-				uglify: 'uglify'
+				dest: '<%= yeoman.dist %>'
 			},
 			html: '<%= yeoman.app %>/index.html'
 		},

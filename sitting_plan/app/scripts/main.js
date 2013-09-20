@@ -16,7 +16,7 @@ angular.module('plan', []).
 			}
 		}
 	})
-	;
+;
 
 function mainCtrl($scope){
 	$scope.region = [];

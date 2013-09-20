@@ -67,7 +67,34 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dekarvn\/Sites\/p\/grunter\/app\/styles\/sass\/screen\.scss}line{font-family:\0000310}}
-#result {
-  color: red;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dekarvn\/Sites\/p\/sitting_plan\/app\/styles\/sass\/screen\.scss}line{font-family:\000038}}
+.row {
+  margin: 10px;
+  padding: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dekarvn\/Sites\/p\/sitting_plan\/app\/styles\/sass\/screen\.scss}line{font-family:\0000311}}
+.row .seat {
+  width: 25px;
+  height: 25px;
+  display: block-inline;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dekarvn\/Sites\/p\/sitting_plan\/app\/styles\/sass\/screen\.scss}line{font-family:\0000320}}
+.row .available {
+  border: 1px solid green;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dekarvn\/Sites\/p\/sitting_plan\/app\/styles\/sass\/screen\.scss}line{font-family:\0000323}}
+.row .selected {
+  border: 1px solid green;
+  background: green;
+  color: white;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dekarvn\/Sites\/p\/sitting_plan\/app\/styles\/sass\/screen\.scss}line{font-family:\0000328}}
+.row .unavailable {
+  border: 1px solid red;
+  background: red;
+  color: white;
 }
