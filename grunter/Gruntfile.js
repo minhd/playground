@@ -65,6 +65,25 @@ module.exports = function(grunt){
 			options:{
 				mangle: false
 			}
+		},
+		concurrent:{
+			dev: [
+				'watch:compass'
+			]
+		},
+		connect:{
+			options:{
+				port: 9000,
+				hostname: 'localhost'
+			},
+			dev:{
+				options:{
+					port:9001,
+					hostname: 'localhost',
+					base:'<%= yeoman.app %>',
+					keepalive: true
+				}
+			}
 		}
 	});
 	require('load-grunt-tasks')(grunt);
