@@ -58,7 +58,8 @@ module.exports = function(grunt){
 		watch: {
 			compass: {
 				files: ['<%= yeoman.app %>/styles/sass/{,*/}*.{scss,sass}'],
-				tasks: ['compass:dev']
+				tasks: ['compass:dev'],
+				livereload:true
 			}
 		},
 		uglify:{
@@ -81,7 +82,8 @@ module.exports = function(grunt){
 					port:9001,
 					hostname: 'localhost',
 					base:'<%= yeoman.app %>',
-					keepalive: true
+					//keepalive: true,
+					livereload:true
 				}
 			}
 		}
@@ -104,6 +106,8 @@ module.exports = function(grunt){
 	]);
 
 	grunt.registerTask('dev', [
+		// 'watch:compass',
+		'connect:dev',
 		'watch:compass'
 	]);
 }
