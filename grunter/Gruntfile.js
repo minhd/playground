@@ -79,12 +79,15 @@ module.exports = function(grunt){
 			},
 			dev:{
 				options:{
-					port:9001,
-					hostname: 'localhost',
 					base:'<%= yeoman.app %>',
 					//keepalive: true,
 					livereload:true
 				}
+			}
+		},
+		open:{
+			dev:{
+				path: 'http://localhost:<%= connect.options.port %>'
 			}
 		}
 	});
@@ -106,8 +109,8 @@ module.exports = function(grunt){
 	]);
 
 	grunt.registerTask('dev', [
-		// 'watch:compass',
 		'connect:dev',
+		'open:dev',
 		'watch:compass'
 	]);
 }
